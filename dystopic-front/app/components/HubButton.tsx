@@ -13,12 +13,12 @@ export default function HubButton({ href, iconSrc, textSrc, altText, className }
   return (
     <Link
       href={href}
-      className={`absolute flex flex-col items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:brightness-125 z-20 ${className}`}
+      className={`flex flex-col items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:brightness-125 z-20 ${className}`}
     >
-      <div className="relative w-32 h-32 md:w-44 md:h-44">
+      <div className="relative aspect-square w-[24vw] min-w-[84px] max-w-[176px]">
         <Image src={iconSrc} alt={`${altText} Icon`} fill className="object-contain" priority />
       </div>
-      <div className="relative w-28 h-8 md:w-40 md:h-12">
+      <div className="relative aspect-[10/3] w-[20vw] min-w-[76px] max-w-[160px]">
         <Image src={textSrc} alt={`${altText} Text`} fill className="object-contain" priority />
       </div>
     </Link>
