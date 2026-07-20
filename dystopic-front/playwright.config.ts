@@ -3,6 +3,10 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
+  // Repo lives on /mnt/d (WSL2 drvfs): dev-server responses are slow, especially
+  // on first compile — default 30s per-test timeout causes spurious goto failures.
+  timeout: 120_000,
+  workers: 2,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   reporter: "list",

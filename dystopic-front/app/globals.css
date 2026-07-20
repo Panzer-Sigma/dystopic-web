@@ -4,5 +4,8 @@ body {
   background-color: black;
   color: white;
   margin: 0;
-  overflow: hidden; /* Prevents scrollbars on the desktop hub */
+  /* Vertical scrolling must stay available (archival feed, entry pages).
+     Only the horizontal axis is clipped, so no sideways scrollbar appears. */
+  overflow-x: hidden;
+  overflow-y: auto;
 }

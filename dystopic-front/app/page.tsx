@@ -1,9 +1,9 @@
 import Image from "next/image";
-import HubButton from "./components/HubButton";
+import HubButton from "@/components/ui/HubButton";
 
 export default function Home() {
   return (
-    <main className="relative w-full min-h-dvh flex flex-col items-center justify-between py-6 overflow-hidden bg-black bg-[url('/assets/bg-mobile.png')] md:bg-[url('/assets/bg.png')] bg-cover bg-center bg-no-repeat">
+    <main className="relative w-full min-h-dvh flex flex-col items-center justify-between py-6 overflow-hidden bg-black bg-[url('/assets/bg-mobile.webp')] md:bg-[url('/assets/bg.webp')] bg-cover bg-center bg-no-repeat">
 
       {/* TOP HEADER */}
       <div className="relative w-full max-w-5xl h-12 md:h-20 mt-2 md:mt-4 z-10 px-4">
@@ -18,11 +18,12 @@ export default function Home() {
 
       {/* CENTER INTERACTIVE CLUSTER
           Mobile: vertical flow — rato, archival+loja row, mapa.
-          Desktop (md+): diamond via absolute positioning. */}
-      <div className="relative w-full max-w-5xl grow flex flex-col items-center justify-evenly gap-2 z-10 md:block">
+          md+: 3-column grid diamond (rato center top, sides row 2, mapa bottom) —
+          grid cells cannot overlap at any viewport size. */}
+      <div className="relative w-full max-w-5xl grow flex flex-col items-center justify-evenly gap-2 z-10 md:grid md:grid-cols-[1fr_auto_1fr] md:grid-rows-[auto_auto] md:w-[clamp(620px,58vw,860px)] md:max-w-none md:gap-x-4 md:content-center md:justify-items-center md:items-center">
 
         {/* Rato Dystopic (Center Top) */}
-        <div className="relative w-36 h-36 sm:w-44 sm:h-44 pointer-events-none z-30 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-[10%] md:w-72 md:h-72">
+        <div className="relative aspect-square w-[38vw] max-w-[176px] sm:max-w-[200px] pointer-events-none z-30 md:w-[clamp(190px,20vw,300px)] md:max-w-none md:col-start-2 md:row-start-1">
           <Image
             src="/assets/rato.png"
             alt="Rato Dystopic"
@@ -39,7 +40,7 @@ export default function Home() {
             iconSrc="/assets/icon-archival.png"
             textSrc="/assets/text-archival.png"
             altText="Archival"
-            className="md:absolute md:left-[20%] md:top-[30%]"
+            className="md:col-start-1 md:row-start-1 md:justify-self-end"
           />
 
           <HubButton
@@ -47,7 +48,7 @@ export default function Home() {
             iconSrc="/assets/icon-loja.png"
             textSrc="/assets/text-loja.png"
             altText="Loja"
-            className="md:absolute md:right-[20%] md:top-[30%]"
+            className="md:col-start-3 md:row-start-1 md:justify-self-start"
           />
         </div>
 
@@ -57,7 +58,7 @@ export default function Home() {
           iconSrc="/assets/icon-mapa.png"
           textSrc="/assets/text-mapa.png"
           altText="Mapa"
-          className="mix-blend-screen md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-[5%]"
+          className="mix-blend-screen md:col-start-2 md:row-start-2 md:-mt-4"
         />
       </div>
 
