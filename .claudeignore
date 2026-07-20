@@ -1,0 +1,14 @@
+.git/
+node_modules/
+*/node_modules
+.env
+.env*
+loop/.env
+loop/memory/
+dystopic-front/node_modules
+dystopic-front/.next/
+dystopic-front/out/
+dystopic-front/.vercel
+dystopic-front/package-lock.json
+wt-*/
+user_folder/
