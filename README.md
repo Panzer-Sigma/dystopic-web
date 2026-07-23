@@ -83,7 +83,7 @@ npx playwright test                                 # suites reuse the running s
 
 ---
 
-## 5. What is needed next (priority order)
+## 5. NEXT COMMITS (in priority order)
 
 1. **Move `app/components/HubButton.tsx` → `components/ui/HubButton.tsx`**, update import in `app/page.tsx`, delete empty dir (structural; long-queued in the loop).
 2. **`/termos` and `/privacidade` pages** — footer links currently 404.
