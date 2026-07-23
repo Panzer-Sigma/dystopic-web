@@ -1,4 +1,4 @@
-# README — DYSTOPIC-WEBSITE
+# DYSTOPIC-WEBSITE
 
 Read this first. What this project is, how it is organized, what the rules are, and which environment traps will waste your time.
 
