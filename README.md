@@ -6,7 +6,7 @@ Read this first. What this project is, how it is organized, what the rules are, 
 
 ## 1. What this project is
 
-**Dystopic** is a dark, glitch-aesthetic transmedia platform website ("Plataforma Transmidiática Regenerativa") built with Next.js and deployed via Vercel at DEV. The visual identity is 100% image-driven: backgrounds, titles, buttons, and labels are exported PNG art pieces, not styled text. Fidelity to the design PNGs is the top priority.
+**Dystopic** is a dark, glitch-aesthetic transmedia platform website ("Plataforma Transmidiática Regenerativa") built with Next.js and deployed via Vercel at DEV. The visual identity is 100% image-driven by handmade designed components: backgrounds, titles, buttons, and labels are exported PNG art pieces, not styled text. Fidelity to the design PNGs is the top priority.
 
 - **App code:** `dystopic-front/` — Next.js 16 (App Router, Turbopack) + React 19 + Tailwind 4 + TypeScript.
 - **Design source of truth:** `DESIGN/.EXPORT PARTES/` — folders `HUB DESKTOP`, `HUB MOBILE`, `ARCHIVAL DESKTOP`, `ARCHIVAL MOBILE`. Each contains a `fullscreen` composite (the target look — files starting with `.` are hidden, use `ls -a`) plus individually exported parts (icons, text labels, backgrounds, arrows). Store references in `DESIGN/references/`. Font: `zrnic rg.otf`.
