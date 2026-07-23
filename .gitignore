@@ -41,19 +41,16 @@ yarn-error.log*
 next-env.d.ts
 node_modules
 
-# loop multi-agent runtime (worktrees + per-run artifacts)
+# internal tooling (not part of public repo)
 /wt-*/
-/loop/work-order.json
-/loop/conductor-input.md
-/loop/triage-out.txt
-/loop/current-work.diff
-/loop/memory/usage.log
-/loop/memory/cron.log
+/loop/
+/.claude/
+/.claudeignore
+CLAUDE.md
+AI-GUIDE.md
+loop.zip
 TUTORIAL.md
 RUNBOOK-FABLE.md
 filetree-to-update-as-following.md
 fable-context.json
 user_folder/
-.claudeignore
-*./claude
-./loop

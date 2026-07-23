@@ -1,0 +1,6 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "cd dystopic-front && npm install && npm run build",
+  "outputDirectory": "dystopic-front/.next",
+  "installCommand": "echo skip-root-install"
+}
