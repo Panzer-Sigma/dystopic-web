@@ -58,7 +58,7 @@ Status legend: ✅ done · 🟡 partial / placeholder · ⛔ blocked · ⬜ not 
 - Add: entry route renders (`/archival/colecao-dystopic-2022` → 200, image + title visible).
 - Add suites for loja, mapa, termos, privacidade once they have real content.
 
-## Environment reminders (see AI-GUIDE.md §4)
+## Environment reminders (see README.md §4)
 - Repo on `/mnt/d` (WSL2): hot reload dead — restart `npm run dev` after edits.
 - Corrupted `.next` hangs compiles — `rm -rf .next` fixes it.
 - Only the Chromium Playwright browser is installed.
