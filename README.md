@@ -1,6 +1,6 @@
-# GUIDE — DYSTOPIC-WEBSITE
+# README — DYSTOPIC-WEBSITE
 
-Read this first. It tells any AI assistant what this project is, how it is organized, what the rules are, and which environment traps will waste your time.
+Read this first. What this project is, how it is organized, what the rules are, and which environment traps will waste your time.
 
 ---
 
