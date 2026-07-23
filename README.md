@@ -16,10 +16,10 @@ Read this first. What this project is, how it is organized, what the rules are, 
 | Route | Status | Notes |
 |---|---|---|
 | `/` (hub) | done | Diamond of 3 buttons (Archival left, Loja right, Mapa bottom) around the rato logo. Mobile = vertical flow; `md+` = 3-col grid diamond. |
-| `/archival` | done (placeholder feed) | Chain nav header (LOJA/ARCHIVAL/MAPA), vertical image feed, working Voltar/Avançar pagination (client component), footer. Feed uses `example-single.png` placeholders — real content pipeline not built yet. |
-| `/loja` | not started | No design; replicate golfwang.com STRUCTURE first (refs in `DESIGN/references/`), style later. Needs `loja/product/[slug]`. |
-| `/mapa` | BLOCKED | No design or reference exists yet. |
-| `/termos`, `/privacidade` | not started | Footer links point to them. |
+| `/archival` | DOING (DONE: placeholder feed + PAGINATTION + MOCKED POSTS)| Chain nav header (LOJA/ARCHIVAL/MAPA), vertical image feed, working Voltar/Avançar pagination (client component), footer. Feed uses `example-single.png` placeholders — real content pipeline not built yet. |
+| `/loja` | TO DO | No design; replicate golfwang.com STRUCTURE first (refs in `DESIGN/references/`), style later. Needs `loja/product/[slug]`. |
+| `/mapa` | TO DO | No design or reference exists yet. |
+| `/termos`, `/privacidade` | done | Footer links point to them. |
 
 ### Code layout (target structure in root `filetree-to-update-as-following.md`)
 - `app/` — routes only (`page.tsx`, `layout.tsx`, `globals.css`, route dirs).
