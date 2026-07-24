@@ -41,16 +41,3 @@ yarn-error.log*
 next-env.d.ts
 node_modules
 
-# internal tooling (not part of public repo)
-/wt-*/
-/loop/
-/.claude/
-/.claudeignore
-CLAUDE.md
-AI-GUIDE.md
-loop.zip
-TUTORIAL.md
-RUNBOOK-FABLE.md
-filetree-to-update-as-following.md
-fable-context.json
-user_folder/
