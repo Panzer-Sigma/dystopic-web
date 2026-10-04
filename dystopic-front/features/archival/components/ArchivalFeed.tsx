@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import Pagination from "@/components/ui/Pagination";
 import { ARCHIVAL_ENTRIES, PAGE_SIZE, TOTAL_PAGES } from "../data";
 
 export default function ArchivalFeed() {
@@ -35,28 +36,7 @@ export default function ArchivalFeed() {
         ))}
       </section>
 
-      {/* PAGINATION */}
-      <div className="relative flex items-center justify-center gap-10 md:gap-16 mt-6 md:mt-8 z-20">
-        <button
-          type="button"
-          onClick={() => setPage((p) => Math.max(0, p - 1))}
-          disabled={page === 0}
-          className="relative aspect-[463/99] w-[clamp(116px,18vw,180px)] transition-all cursor-pointer enabled:hover:brightness-150 disabled:opacity-40 disabled:cursor-default"
-        >
-          <Image src="/assets/archival/btn-voltar.png" alt="Voltar" fill className="object-contain" />
-        </button>
-
-        <span className="sr-only" aria-live="polite">{`Página ${page + 1} de ${TOTAL_PAGES}`}</span>
-
-        <button
-          type="button"
-          onClick={() => setPage((p) => Math.min(TOTAL_PAGES - 1, p + 1))}
-          disabled={page === TOTAL_PAGES - 1}
-          className="relative aspect-[572/118] w-[clamp(120px,19vw,196px)] transition-all cursor-pointer enabled:hover:brightness-150 disabled:opacity-40 disabled:cursor-default"
-        >
-          <Image src="/assets/archival/btn-avancar.png" alt="Avançar" fill className="object-contain" />
-        </button>
-      </div>
+      <Pagination page={page} totalPages={TOTAL_PAGES} onChange={setPage} />
     </>
   );
 }
