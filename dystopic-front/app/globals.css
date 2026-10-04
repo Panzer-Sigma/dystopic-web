@@ -9,3 +9,15 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+@theme inline {
+  --font-display: var(--font-chakra-petch);
+}
+
+/* Pale lettering with the navy outline used by loja titles and the cart heading. */
+@utility text-outline {
+  color: #e4e0ff;
+  text-shadow:
+    -1px -1px 0 #1b1a5c, 1px -1px 0 #1b1a5c, -1px 1px 0 #1b1a5c, 1px 1px 0 #1b1a5c,
+    0 0 6px #1b1a5c;
+}
