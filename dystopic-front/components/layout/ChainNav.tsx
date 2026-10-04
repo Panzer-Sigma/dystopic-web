@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type Section = "loja" | "archival" | "mapa";
+export type Section ="loja" | "archival" | "mapa";
 
 interface ChainNavProps {
   current: Section;
