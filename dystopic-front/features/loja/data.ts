@@ -20,8 +20,8 @@ const photos = (slug: string, count: number) =>
   Array.from({ length: count }, (_, i) => `/assets/loja/${slug}/${i + 1}.webp`);
 
 export const PRODUCTS: Product[] = [
-  { ...COMMON, slug: "camiseta-apocalypse", name: "Camiseta T-Shirt _apocalypse_", price: 20000, images: photos("camiseta-apocalypse", 4), category: "Camiseta T-Shirt Comercial", description: description("Uma camiseta") },
-  { ...COMMON, slug: "camiseta-glitch-gengar", name: "Camiseta T-Shirt _Glitch Gengar_", price: 20000, images: photos("camiseta-glitch-gengar", 5), category: "Camiseta T-Shirt Comercial", description: description("Uma camiseta") },
+  { ...COMMON, slug: "camiseta-apocalypse", name: "Camiseta T-Shirt apocalypse", price: 20000, images: photos("camiseta-apocalypse", 4), category: "Camiseta T-Shirt Comercial", description: description("Uma camiseta") },
+  { ...COMMON, slug: "camiseta-glitch-gengar", name: "Camiseta T-Shirt Glitch Gengar", price: 20000, images: photos("camiseta-glitch-gengar", 5), category: "Camiseta T-Shirt Comercial", description: description("Uma camiseta") },
   { ...COMMON, slug: "camiseta-toxina-arida", name: "Camiseta T-Shirt Toxina Arida", price: 20000, images: photos("camiseta-toxina-arida", 3), category: "Camiseta T-Shirt Comercial", description: description("Uma camiseta") },
   { ...COMMON, slug: "manga-longa-exp-dentes", name: "Camiseta Manga Longa EXP.Dentes", price: 15000, images: photos("manga-longa-exp-dentes", 4), category: "Camiseta T-Shirt Manga Longa Comercial", description: description("Uma camiseta") },
   { ...COMMON, slug: "regata-dont-enter", name: "Regata T-Shirt Don't Enter", price: 20000, images: photos("regata-dont-enter", 4), category: "Regata T-Shirt Comercial", description: description("Uma regata") },
