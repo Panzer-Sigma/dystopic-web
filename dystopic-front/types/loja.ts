@@ -6,7 +6,8 @@ export interface Product {
   price: number;
   /** Photos in display order; the first one is the grid and cart cover. */
   images: string[];
-  sizes: string[];
+  /** Units available per size, in display order; 0 shows the size as Esgotado. */
+  stock: Record<string, number>;
   category: string;
   year: string;
   /** Modelagem */

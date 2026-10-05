@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import Pagination from "@/components/ui/Pagination";
 import ProductImage from "./ProductImage";
-import { PAGE_SIZE, PRODUCTS, TOTAL_PAGES } from "../data";
+import SoldOutBadge from "./SoldOutBadge";
+import { PAGE_SIZE, PRODUCTS, TOTAL_PAGES, isSoldOut } from "../data";
 
 export default function ProductGrid() {
   const [page, setPage] = useState(0);
@@ -20,7 +21,10 @@ export default function ProductGrid() {
             href={`/loja/product/${product.slug}`}
             className="group flex flex-col items-center transition-all hover:brightness-125"
           >
-            <ProductImage src={product.images[0]} alt={product.name} sizes="(max-width: 768px) 47vw, 36vw" priority={i < 2} />
+            <div className="relative w-full">
+              <ProductImage src={product.images[0]} alt={product.name} sizes="(max-width: 768px) 47vw, 36vw" priority={i < 2} />
+              {isSoldOut(product) && <SoldOutBadge />}
+            </div>
             <h2 className="mt-2 md:mt-3 font-display text-outline text-center text-sm md:text-2xl leading-tight">
               {product.name}
             </h2>

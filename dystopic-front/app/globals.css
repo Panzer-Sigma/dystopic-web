@@ -21,3 +21,20 @@ body {
     -1px -1px 0 #1b1a5c, 1px -1px 0 #1b1a5c, -1px 1px 0 #1b1a5c, 1px 1px 0 #1b1a5c,
     0 0 6px #1b1a5c;
 }
+
+/* Navy action button from the cart design (>Checkout, Adicionar ao carrinho). */
+@utility btn-primary {
+  padding: 0.5rem 2rem;
+  background-color: #16164f;
+  border: 2px solid #737373;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 150ms;
+  &:hover:not(:disabled) {
+    filter: brightness(1.25);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}

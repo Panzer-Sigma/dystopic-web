@@ -1,11 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { setCartOpen, setQty, useCart } from "@/store/cart";
-import ProductImage from "./ProductImage";
+import { setCartOpen, useCart } from "@/store/cart";
+import CartLines from "./CartLines";
 import { formatPrice } from "../data";
 
-const qtyButton = "w-8 h-8 md:w-9 md:h-9 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors cursor-pointer";
 const divider = "border-t-4 border-dotted border-white/90";
 
 /** Right-side cart panel ("SEU CARRINHO"), opened by the cart button or by adding a product. */
@@ -53,25 +53,7 @@ export default function CartDrawer() {
         {lines.length === 0 ? (
           <p className="py-10 text-center uppercase tracking-wider text-white/70">Seu carrinho está vazio.</p>
         ) : (
-          <ul>
-            {lines.map((line) => (
-              <li key={`${line.slug}-${line.size}`} className="flex gap-4 py-6">
-                <div className="w-[42%] shrink-0">
-                  <ProductImage src={line.image} alt={line.name} sizes="180px" />
-                </div>
-                <div className="flex flex-col gap-2 tracking-wider">
-                  <p className="uppercase">{line.name}</p>
-                  <p>Tam. {line.size}</p>
-                  <div className="flex items-center gap-5">
-                    <button type="button" onClick={() => setQty(line.slug, line.size, line.qty - 1)} aria-label="Diminuir quantidade" className={qtyButton}>-</button>
-                    <span className="text-xl tabular-nums" aria-live="polite">{line.qty}</span>
-                    <button type="button" onClick={() => setQty(line.slug, line.size, line.qty + 1)} aria-label="Aumentar quantidade" className={qtyButton}>+</button>
-                  </div>
-                  <p>{formatPrice(line.price * line.qty)}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <CartLines lines={lines} />
         )}
 
         <div className={divider} />
@@ -81,14 +63,14 @@ export default function CartDrawer() {
           <span className="tabular-nums">{formatPrice(subtotal)}</span>
         </div>
 
-        {/* ponytail: no checkout backend yet; wire this to the payment flow when it exists. */}
-        <button
-          type="button"
-          disabled={lines.length === 0}
-          className="block mx-auto mt-8 px-8 py-2 bg-[#16164f] border-2 border-neutral-500 text-2xl font-semibold enabled:hover:brightness-125 disabled:opacity-50 cursor-pointer disabled:cursor-default"
+        <Link
+          href="/loja/checkout"
+          onClick={() => setCartOpen(false)}
+          aria-disabled={lines.length === 0}
+          className={`btn-primary block w-fit mx-auto mt-8 text-2xl ${lines.length === 0 ? "pointer-events-none opacity-50" : ""}`}
         >
           &gt;Checkout
-        </button>
+        </Link>
 
         <p className="mt-8 text-center text-sm uppercase tracking-widest">A taxa de entrega é calculada no checkout.</p>
       </aside>

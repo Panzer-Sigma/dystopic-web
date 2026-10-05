@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import SectionPage from "@/components/layout/SectionPage";
-import { AddToCart, PRODUCTS, ProductGallery, formatPrice, getProduct } from "@/features/loja";
+import { AddToCart, PRODUCTS, ProductGallery, SoldOutBadge, WHATSAPP_DISPLAY, formatPrice, getProduct, isSoldOut, whatsappLink } from "@/features/loja";
 
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
@@ -20,7 +20,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   return (
     <SectionPage section="loja">
       <article className="w-[94%] md:w-[72%] max-w-5xl grid md:grid-cols-2 gap-6 md:gap-12 mt-6 md:mt-8 z-10 font-display text-white">
-        <ProductGallery images={product.images} alt={product.name} />
+        <div className="relative">
+          <ProductGallery images={product.images} alt={product.name} />
+          {isSoldOut(product) && <SoldOutBadge />}
+        </div>
         <div className="flex flex-col gap-4">
           <p className="uppercase tracking-wider text-white/60 text-sm">{product.category}</p>
           <h1 className="text-outline text-2xl md:text-4xl leading-tight">{product.name}</h1>
@@ -32,7 +35,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               ["Estampa", product.print],
               ["Modelagem", product.fit],
               ["Composição", product.composition],
-              ["Tamanhos", product.sizes.join(" / ")],
+              ["Tamanhos", Object.keys(product.stock).join(" / ")],
               ["Disponibilidade", product.availability],
               ["Ano", product.year],
               ["Origem", product.origin],
@@ -44,6 +47,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
             ))}
           </dl>
+          <p className="text-sm text-white/70">
+            Trocas e devoluções:{" "}
+            <a href={whatsappLink(`Olá! Quero solicitar troca ou devolução de ${product.name}.`)} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+              WhatsApp {WHATSAPP_DISPLAY}
+            </a>
+          </p>
         </div>
       </article>
     </SectionPage>

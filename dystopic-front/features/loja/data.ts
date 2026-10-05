@@ -2,7 +2,8 @@ import type { Product } from "@/types/loja";
 
 // Catalog from DESIGN/SITE LOJA: one folder per product, metadata from its "Descrição" doc.
 const COMMON = {
-  sizes: ["P", "M"],
+  // One piece per size; set a size to 0 once it sells.
+  stock: { P: 1, M: 1 },
   year: "2026",
   fit: "Aaron A-shirt v4.10.2",
   availability: "Pronta entrega / sob encomenda",
@@ -26,6 +27,10 @@ export const PRODUCTS: Product[] = [
   { ...COMMON, slug: "regata-dont-enter", name: "Regata T-Shirt Don't Enter", price: 20000, images: photos("regata-dont-enter", 4), category: "Regata T-Shirt Comercial", description: description("Uma regata") },
   { ...COMMON, slug: "vestido-longo-ice-scream", name: "Vestido Longo Ice Scream", price: 25000, images: photos("vestido-longo-ice-scream", 3), category: "Vestido Longo Comercial", description: description("Um vestido") },
 ];
+
+export function isSoldOut(product: Product): boolean {
+  return Object.values(product.stock).every((units) => units <= 0);
+}
 
 export const PAGE_SIZE = 6;
 export const TOTAL_PAGES = Math.ceil(PRODUCTS.length / PAGE_SIZE);

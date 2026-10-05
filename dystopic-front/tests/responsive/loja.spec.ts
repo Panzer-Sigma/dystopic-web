@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-// Responsiveness + cart flow for the loja.
+// Responsiveness, cart and checkout flow for the loja.
 // Runs in the same mobile/desktop projects as the hub suite.
 
 test.describe("loja", () => {
@@ -19,7 +19,7 @@ test.describe("loja", () => {
     await expect(cards.first().locator("img")).toBeVisible();
   });
 
-  test("adding a product opens the cart and updates the count", async ({ page }) => {
+  test("cart holds one piece per size and survives a reload", async ({ page }) => {
     await page.locator('section a[href^="/loja/product/"]').first().click();
     // First visit compiles the route on the slow /mnt/d dev server.
     await expect(page.locator("article h1")).toBeVisible({ timeout: 60_000 });
@@ -32,14 +32,39 @@ test.describe("loja", () => {
 
     const drawer = page.getByRole("dialog", { name: "Seu carrinho" });
     await expect(drawer.getByText("Tam. M")).toBeVisible();
-    await drawer.getByRole("button", { name: "Aumentar quantidade" }).click();
-    await expect(drawer.getByText("2", { exact: true })).toBeVisible();
+    await expect(drawer.getByRole("button", { name: "Aumentar quantidade" })).toBeDisabled();
 
     await page.keyboard.press("Escape");
-    await expect(page.getByRole("button", { name: /Abrir carrinho, 2 itens/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Já está no carrinho" })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Abrir carrinho, 1 item/ })).toBeVisible();
 
-    // Cart survives a reload (localStorage).
     await page.reload();
-    await expect(page.getByRole("button", { name: /Abrir carrinho, 2 itens/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Abrir carrinho, 1 item/ })).toBeVisible();
+  });
+
+  test("checkout sends the order to WhatsApp and offers tracking", async ({ page }) => {
+    // Record the wa.me URL instead of opening WhatsApp.
+    await page.addInitScript(() => {
+      window.open = (url) => {
+        (window as unknown as { openedUrl: string }).openedUrl = String(url);
+        return null;
+      };
+    });
+    await page.goto("/loja/product/camiseta-apocalypse");
+    await page.getByRole("button", { name: "P", exact: true }).click({ timeout: 60_000 });
+    await page.getByRole("button", { name: "Adicionar ao carrinho" }).click();
+    await page.getByRole("dialog", { name: "Seu carrinho" }).getByRole("link", { name: ">Checkout" }).click();
+
+    await expect(page.getByRole("heading", { name: "Checkout" })).toBeVisible({ timeout: 60_000 });
+    await page.getByLabel("Nome").fill("Teste");
+    await page.getByLabel("Endereço de entrega").fill("Rua Teste, 1");
+    await page.getByRole("button", { name: ">Finalizar no WhatsApp" }).click();
+
+    const opened = await page.evaluate(() => (window as unknown as { openedUrl: string }).openedUrl);
+    expect(opened).toMatch(/^https:\/\/wa\.me\/5511934281706\?text=/);
+    expect(decodeURIComponent(opened)).toContain("Camiseta T-Shirt _apocalypse_ — Tam. P");
+
+    await expect(page.getByRole("heading", { name: "Pedido enviado" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Rastrear pedido no WhatsApp" })).toHaveAttribute("href", /wa\.me\/5511934281706.*rastrear/);
   });
 });
