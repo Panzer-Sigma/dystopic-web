@@ -62,7 +62,7 @@ test.describe("loja", () => {
 
     const opened = await page.evaluate(() => (window as unknown as { openedUrl: string }).openedUrl);
     expect(opened).toMatch(/^https:\/\/wa\.me\/5511934281706\?text=/);
-    expect(decodeURIComponent(opened)).toContain("Camiseta T-Shirt _apocalypse_ — Tam. P");
+    expect(decodeURIComponent(opened)).toContain("Camiseta T-Shirt apocalypse — Tam. P");
 
     await expect(page.getByRole("heading", { name: "Pedido enviado" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Rastrear pedido no WhatsApp" })).toHaveAttribute("href", /wa\.me\/5511934281706.*rastrear/);
