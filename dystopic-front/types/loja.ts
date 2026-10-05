@@ -8,7 +8,15 @@ export interface Product {
   images: string[];
   sizes: string[];
   category: string;
+  year: string;
+  /** Modelagem */
+  fit: string;
   availability: string;
+  /** Estampa */
+  print: string;
+  /** Código do produto */
+  code: string;
+  origin: string;
   composition: string;
   description: string;
 }

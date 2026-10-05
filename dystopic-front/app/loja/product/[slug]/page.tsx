@@ -28,10 +28,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <AddToCart product={product} />
           <p className="mt-4 text-white/80 leading-relaxed">{product.description}</p>
           <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm text-white/70">
-            <dt className="uppercase tracking-wider">Composição</dt>
-            <dd>{product.composition}</dd>
-            <dt className="uppercase tracking-wider">Disponibilidade</dt>
-            <dd>{product.availability}</dd>
+            {[
+              ["Estampa", product.print],
+              ["Modelagem", product.fit],
+              ["Composição", product.composition],
+              ["Tamanhos", product.sizes.join(" / ")],
+              ["Disponibilidade", product.availability],
+              ["Ano", product.year],
+              ["Origem", product.origin],
+              ["Código", product.code],
+            ].map(([label, value]) => (
+              <div key={label} className="contents">
+                <dt className="uppercase tracking-wider">{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
           </dl>
         </div>
       </article>
