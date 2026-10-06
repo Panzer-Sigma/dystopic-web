@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import CityMap from "./CityMap";
+import Disclaimer from "./Disclaimer";
 import DistrictPanel from "./DistrictPanel";
 import { DISTRICTS } from "../data";
 
@@ -22,12 +23,13 @@ export default function MapaExplorer() {
               key={d.slug}
               aria-pressed={d.slug === selected}
               onClick={() => setSelected(d.slug)}
-              className="btn-primary px-3! py-1! font-display text-sm uppercase aria-pressed:border-[#e4e0ff]"
+              className="btn-primary px-3! py-1! font-display text-sm uppercase aria-pressed:border-[#ff2fa8]"
             >
               {d.name}
             </button>
           ))}
         </div>
+        <Disclaimer />
       </div>
 
       <DistrictPanel district={district} />

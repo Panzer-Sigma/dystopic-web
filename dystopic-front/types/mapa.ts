@@ -13,11 +13,6 @@ export interface DistrictSection {
 export interface District {
   slug: string;
   name: string;
-  /** Map pin position, WGS84 degrees. */
-  lon: number;
-  lat: number;
-  /** Region colour, sampled from the district map art. */
-  color: string;
   /** District map art from DESIGN, with the streets highlighted. */
   image: { src: string; width: number; height: number };
   sections: DistrictSection[];

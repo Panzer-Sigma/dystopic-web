@@ -5,9 +5,6 @@ export const DISTRICTS: District[] = [
   {
     slug: "bras",
     name: "Brás",
-    lon: -46.616,
-    lat: -23.543,
-    color: "#c8189f",
     image: { src: "/assets/mapa/bras.webp", width: 755, height: 750 },
     sections: [
       {
@@ -53,9 +50,6 @@ export const DISTRICTS: District[] = [
   {
     slug: "bom-retiro",
     name: "Bom Retiro",
-    lon: -46.638,
-    lat: -23.526,
-    color: "#4a6fe0",
     image: { src: "/assets/mapa/bom-retiro.webp", width: 720, height: 564 },
     sections: [
       {
@@ -93,9 +87,6 @@ export const DISTRICTS: District[] = [
   {
     slug: "tamanduatei",
     name: "Tamanduateí",
-    lon: -46.585,
-    lat: -23.583,
-    color: "#5b4dff",
     image: { src: "/assets/mapa/tamanduatei.webp", width: 648, height: 793 },
     sections: [
       {
@@ -134,3 +125,7 @@ export const DISTRICTS: District[] = [
     ],
   },
 ];
+
+// Draft wording (not in the design); replace with the approved text.
+export const DISCLAIMER =
+  "As informações deste mapa são relatos de coleta e podem mudar a qualquer momento. Respeite garis, lojistas e moradores, não deixe bagunça e, se possível, vá acompanhado. A coleta é feita por sua conta e risco.";
