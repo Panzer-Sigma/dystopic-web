@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import CityMap from "./CityMap";
-import Disclaimer from "./Disclaimer";
 import DistrictPanel from "./DistrictPanel";
 import { DISTRICTS } from "../data";
 
@@ -29,7 +28,6 @@ export default function MapaExplorer() {
             </button>
           ))}
         </div>
-        <Disclaimer />
       </div>
 
       <DistrictPanel district={district} />
